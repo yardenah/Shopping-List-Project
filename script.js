@@ -29,7 +29,7 @@ function addItem (e) {
 
 }
 
-function createButton(classes){
+function createButton(classes) {
     const button=document.createElement('button');
     button.className=classes;
     const icon=createIcon('fa-solid fa-xmark');
@@ -37,13 +37,13 @@ function createButton(classes){
     return button;
 }
 
-function createIcon(classes){
+function createIcon(classes) {
     const icon=document.createElement('i');
     icon.className=classes;
     return icon;
 }
 
-function removeItem(e){
+function removeItem(e) {
      if (e.target.parentElement.classList.contains('remove-item')){
         if(confirm('Are you sure you want to delete?'))
         {e.target.parentElement.parentElement.remove();
@@ -52,11 +52,26 @@ function removeItem(e){
      
 }
 
-function clearAllItems(){
+function clearAllItems() {
     while(itemList.firstChild){
         itemList.removeChild(itemList.firstChild);
     }
     checkUI();
+}
+
+function filterItems(e) {
+    const items=document.querySelectorAll('li');
+    const text=e.target.value.toLowerCase();
+
+    items.forEach((item)=>{
+        const itemName=item.firstChild.textContent.toLowerCase();
+
+        if (itemName.indexOf(text) != -1){
+            item.style.display='flex';
+        } else {
+            item.style.display='none';
+        }
+    });
 }
 
 function checkUI () {
@@ -75,4 +90,7 @@ function checkUI () {
 itemForm.addEventListener('submit', addItem);
 itemList.addEventListener('click', removeItem);
 clearBtn.addEventListener('click', clearAllItems);
+itemFilter.addEventListener('input',filterItems);
+
+checkUI();
 
