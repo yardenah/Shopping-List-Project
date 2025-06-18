@@ -17,7 +17,7 @@ A simple and interactive shopping list application built using vanilla JavaScrip
 
 ## 📸 Preview
 
-![App Screenshot](/shopping-list/images/ShoppingListDemo.gif)
+![App Screenshot](images/ShoppingListDemo.gif)
 
 ---
 
